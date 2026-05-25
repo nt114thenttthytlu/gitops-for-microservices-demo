@@ -76,6 +76,11 @@ ingress:
 # -- Expose the service via gateway-api HTTPRoute
 # Requires Gateway API resources and suitable controller installed within the cluster
 # (see: https://gateway-api.sigs.k8s.io/guides/)
+
+env:
+  DISABLE_PROFILER: "1"
+  PORT: "7000"
+  
 httpRoute:
   # HTTPRoute enabled.
   enabled: false
