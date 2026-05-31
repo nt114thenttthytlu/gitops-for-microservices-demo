@@ -2,14 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: productcatalogservice
-  labels:
-    app: productcatalogservice
 spec:
-  type: ClusterIP
   selector:
-    app: productcatalogservice
+    app.kubernetes.io/name: productcatalogservice
+    app.kubernetes.io/instance: productcatalogservice
   ports:
     - name: grpc
       port: 3550
-      protocol: TCP
       targetPort: 3550

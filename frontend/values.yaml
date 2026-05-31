@@ -7,7 +7,7 @@ replicaCount: 2
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: uyenthy/frontend
+  repository: 3.0.195.225/sample-microservice/frontend
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -123,6 +123,8 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 env:
+  PORT: "8080"
+
   PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
   CURRENCY_SERVICE_ADDR: "currencyservice:7000"
   CART_SERVICE_ADDR: "cartservice:7070"
@@ -130,6 +132,8 @@ env:
   SHIPPING_SERVICE_ADDR: "shippingservice:50051"
   CHECKOUT_SERVICE_ADDR: "checkoutservice:5050"
   AD_SERVICE_ADDR: "adservice:9555"
+
+  SHOPPING_ASSISTANT_SERVICE_ADDR: "shoppingassistantservice:80"
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:

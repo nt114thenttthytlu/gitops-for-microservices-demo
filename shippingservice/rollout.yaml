@@ -34,7 +34,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 4.193.154.62/sample-microservice/shippingservice:latest
+          image: 3.0.195.225/sample-microservice/shippingservice:latest
           ports:
             - containerPort: 50051
           readinessProbe:

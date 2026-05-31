@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/thuanthentran/gitops-for-microservices-demo
+    repoURL: https://github.com/nt114thenttthytlu/gitops-for-microservices-demo
     targetRevision: main
     path: rediscart
   destination:

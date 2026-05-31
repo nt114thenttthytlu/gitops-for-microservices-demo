@@ -7,7 +7,7 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: uyenthy/loadgenerator
+  repository: 3.0.195.225/sample-microservice/loadgenerator
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -110,6 +110,9 @@ httpRoute:
   #     headers:
   #     - name: version
   #       value: v2
+  
+env:
+  FRONTEND_ADDR: "frontend-currencyservice:80"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -124,14 +127,6 @@ resources: {}
   #   memory: 128Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
