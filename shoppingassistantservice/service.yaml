@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppingassistantservice
+  labels:
+    app: shoppingassistantservice
+spec:
+  type: ClusterIP
+  selector:
+    app: shoppingassistantservice
+  ports:
+    - name: grpc
+      port: 8080
+      protocol: TCP
+      targetPort: 8080

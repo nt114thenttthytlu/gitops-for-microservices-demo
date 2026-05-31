@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 4.193.154.62/sample-microservice/paymentservice:latest
+          image: 3.0.195.225/sample-microservice/paymentservice:latest
           ports:
             - containerPort: 50051
           env:
