@@ -114,6 +114,7 @@ httpRoute:
  
 env:
   DISABLE_PROFILER: "1"
+  PORT: "50051"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
