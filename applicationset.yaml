@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: microservices
+  name: default
   namespace: argocd
 spec:
   generators:
@@ -26,7 +26,7 @@ spec:
 
       destination:
         server: https://kubernetes.default.svc
-        namespace: microservices
+        namespace: default
 
       syncPolicy:
         automated:
