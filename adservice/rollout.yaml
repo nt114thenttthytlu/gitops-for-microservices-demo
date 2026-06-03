@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 3.0.195.225/sample-microservice/adservice:latest
+          image: harbor.thenttthytlu.io.vn/sample-microservice/adservice:latest
           ports:
             - containerPort: 9555
           readinessProbe:

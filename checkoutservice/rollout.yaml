@@ -34,7 +34,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 3.0.195.225/sample-microservice/checkoutservice:latest
+          image: harbor.thenttthytlu.io.vn/sample-microservice/checkoutservice:latest
           ports:
             - containerPort: 5050
               protocol: TCP

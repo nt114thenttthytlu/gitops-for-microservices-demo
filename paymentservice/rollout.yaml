@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 3.0.195.225/sample-microservice/paymentservice:latest
+          image: harbor.thenttthytlu.io.vn/sample-microservice/paymentservice:latest
           ports:
             - containerPort: 50051
           env:
