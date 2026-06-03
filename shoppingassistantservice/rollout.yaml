@@ -33,7 +33,7 @@ spec:
 
       containers:
         - name: server
-          image: 3.0.195.225/sample-microservice/shoppingassistantservice:latest
+          image: harbor.thenttthytlu.io.vn/sample-microservice/shoppingassistantservice:latest
           ports:
             - containerPort: 8080
 

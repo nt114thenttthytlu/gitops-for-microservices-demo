@@ -36,7 +36,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 3.0.195.225/sample-microservice/frontend:latest
+          image: harbor.thenttthytlu.io.vn/sample-microservice/frontend:latest
           ports:
             - containerPort: 8080
           readinessProbe:

@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 3.0.195.225/sample-microservice/emailservice:latest
+          image: harbor.thenttthytlu.io.vn/sample-microservice/emailservice:latest
           ports:
             - containerPort: 8080
           env:
