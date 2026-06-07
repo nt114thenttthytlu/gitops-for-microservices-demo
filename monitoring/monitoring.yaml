@@ -9,53 +9,44 @@ spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
-
     chart: kube-prometheus-stack
-
     targetRevision: 69.3.1
     helm:
       values: |
-
         prometheus:
           prometheusSpec:
-            storage:
+            storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: "gp2"
+                  storageClassName: "ebs-gp3"
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
                       storage: 10Gi
-          service:
-            type: LoadBalancer
-
+          # Giữ mặc định ClusterIP cho service của Prometheus
 
         grafana:
           initChownData:
             enabled: false
-          
           podSecurityContext:
             fsGroup: 472
             runAsGroup: 472
             runAsUser: 472
-
           persistence:
             enabled: true
             size: 5Gi
-            storageClassName: "gp2"
-
+            storageClassName: "ebs-gp3"
           service:
             type: LoadBalancer
+            annotations:
+              # Ép AWS tạo Public Load Balancer để có link Demo
+              service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 
-
-        alertmanager:
-          service:
-            type: LoadBalancer
+        # Bỏ phần ghi đè service của Alertmanager để giữ mặc định (ClusterIP)
 
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
-
   syncPolicy:
     automated:
       prune: true
@@ -63,4 +54,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-      - SkipDryRunOnMissingResource=true
