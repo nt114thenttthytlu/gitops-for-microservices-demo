@@ -7,15 +7,15 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: harbor.thenttthytlu.io.vn/sample-microservice/shippingservice
+  repository: ghcr.io/nt114thenttthytlu/microservices-demo/shippingservice
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 73-7bc7d9ac
+  tag: sha-ba47df6
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets:
-  - name: harbor-secret
+  - name: ghcr-pull-secret
 # This is to override the chart name.
 nameOverride: ""
 fullnameOverride: ""

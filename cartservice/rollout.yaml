@@ -11,21 +11,26 @@ spec:
       activeService: cartservice
       previewService: cartservice-preview
       autoPromotionEnabled: false
+
   selector:
     matchLabels:
       app: cartservice
+
   template:
     metadata:
       labels:
         app: cartservice
+
     spec:
       serviceAccountName: cartservice
       terminationGracePeriodSeconds: 5
+
       securityContext:
         fsGroup: 1000
         runAsGroup: 1000
         runAsNonRoot: true
         runAsUser: 1000
+
       containers:
         - name: server
           securityContext:
@@ -35,7 +40,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: harbor.thenttthytlu.io.vn/sample-microservice/cartservice:latest
+          image: ghcr.io/nt114thenttthytlu/microservices-demo/cartservice:sha-ba47df6
           ports:
             - containerPort: 7070
               protocol: TCP
@@ -58,5 +63,6 @@ spec:
             limits:
               cpu: 300m
               memory: 128Mi
+
       imagePullSecrets:
-        - name: harbor-pull-secret
+        - name: ghcr-pull-secret

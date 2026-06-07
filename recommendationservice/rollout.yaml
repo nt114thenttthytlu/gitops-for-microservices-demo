@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: harbor.thenttthytlu.io.vn/sample-microservice/recommendationservice:latest
+          image: ghcr.io/nt114thenttthytlu/microservices-demo/recommendationservice:sha-ba47df6
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -61,4 +61,4 @@ spec:
               cpu: 200m
               memory: 450Mi
       imagePullSecrets:
-        - name: harbor-pull-secret
+        - name: ghcr-pull-secret

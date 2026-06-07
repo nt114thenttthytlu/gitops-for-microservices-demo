@@ -28,9 +28,9 @@ spec:
         runAsUser: 1000
       containers:
         - name: server
-          securityContext:
+          image: ghcr.io/nt114thenttthytlu/microservices-demo/emailservice:sha-ba47df6
             allowPrivilegeEscalation: false
-            capabilities:
+        - name: ghcr-pull-secret
               drop:
                 - ALL
             privileged: false
