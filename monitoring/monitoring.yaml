@@ -21,7 +21,7 @@ spec:
             storage:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: "gp3"
+                  storageClassName: "gp2"
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
@@ -42,7 +42,7 @@ spec:
           persistence:
             enabled: true
             size: 5Gi
-            storageClassName: "gp3"
+            storageClassName: "gp2"
 
           service:
             type: LoadBalancer
