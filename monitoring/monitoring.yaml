@@ -21,13 +21,13 @@ spec:
             storage:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: "local-path"
+                  storageClassName: "gp3"
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
                       storage: 10Gi
           service:
-            type: NodePort
+            type: LoadBalancer
 
 
         grafana:
@@ -42,15 +42,15 @@ spec:
           persistence:
             enabled: true
             size: 5Gi
-            storageClassName: "local-path"
+            storageClassName: "gp3"
 
           service:
-            type: NodePort
+            type: LoadBalancer
 
 
         alertmanager:
           service:
-            type: NodePort
+            type: LoadBalancer
 
   destination:
     server: https://kubernetes.default.svc
