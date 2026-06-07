@@ -33,7 +33,7 @@ spec:
 
       containers:
         - name: server
-          image: harbor.thenttthytlu.io.vn/sample-microservice/shoppingassistantservice:latest
+          image: ghcr.io/nt114thenttthytlu/microservices-demo/shoppingassistantservice:sha-ba47df6
           ports:
             - containerPort: 8080
 
@@ -62,4 +62,4 @@ spec:
               memory: 450Mi
 
       imagePullSecrets:
-        - name: harbor-pull-secret
+        - name: ghcr-pull-secret

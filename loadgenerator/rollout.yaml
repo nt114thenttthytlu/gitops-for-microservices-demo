@@ -69,7 +69,9 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: 3.0.195.225/sample-microservice/loadgenerator:latest
+          image: ghcr.io/nt114thenttthytlu/microservices-demo/loadgenerator:sha-ba47df6
+                imagePullSecrets:
+                  - name: ghcr-pull-secret
           env:
             - name: FRONTEND_ADDR
               value: "frontend:80"

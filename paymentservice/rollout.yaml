@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: harbor.thenttthytlu.io.vn/sample-microservice/paymentservice:latest
+          image: ghcr.io/nt114thenttthytlu/microservices-demo/paymentservice:sha-ba47df6
           ports:
             - containerPort: 50051
           env:
@@ -57,4 +57,4 @@ spec:
               cpu: 200m
               memory: 128Mi
       imagePullSecrets:
-        - name: harbor-pull-secret
+        - name: ghcr-pull-secret
