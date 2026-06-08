@@ -11,3 +11,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: kyverno
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true  # BẮT BUỘC cho Kyverno policies để tránh lỗi size
