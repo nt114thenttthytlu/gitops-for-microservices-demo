@@ -9,48 +9,34 @@ spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
-
     chart: kube-prometheus-stack
-
     targetRevision: 69.3.1
     helm:
       values: |
-
         prometheus:
           prometheusSpec:
-            storage:
-              volumeClaimTemplate:
-                spec:
-                  storageClassName: "gp3"
-                  accessModes: ["ReadWriteOnce"]
-                  resources:
-                    requests:
-                      storage: 10Gi
+            # Chuyển đổi sang bộ nhớ tạm, không tạo PVC đòi hỏi StorageClass nữa
+            storageSpec:
+              emptyDir: {}
           service:
             type: LoadBalancer
-
+            annotations:
+              service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 
         grafana:
-          initChownData:
-            enabled: false
-          
-          podSecurityContext:
-            fsGroup: 472
-            runAsGroup: 472
-            runAsUser: 472
-
+          # Tắt hoàn toàn tính năng lưu trữ ổ cứng vật lý
           persistence:
-            enabled: true
-            size: 5Gi
-            storageClassName: "gp3"
-
+            enabled: false
           service:
             type: LoadBalancer
-
+            annotations:
+              service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 
         alertmanager:
           service:
             type: LoadBalancer
+            annotations:
+              service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 
   destination:
     server: https://kubernetes.default.svc
