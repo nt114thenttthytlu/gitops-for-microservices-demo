@@ -1,0 +1,16 @@
+{{- if .Values.rollout.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: productcatalogservice-preview
+  labels:
+    app: productcatalogservice
+spec:
+  type: ClusterIP
+  selector:
+    app: productcatalogservice
+  ports:
+    - name: grpc
+      port: 3550
+      protocol: TCP
+      targetPort: 3550{{- end }}

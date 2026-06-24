@@ -1,0 +1,16 @@
+{{- if .Values.rollout.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadgenerator-preview
+  labels:
+    app: loadgenerator
+spec:
+  type: ClusterIP
+  selector:
+    app: loadgenerator
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080{{- end }}

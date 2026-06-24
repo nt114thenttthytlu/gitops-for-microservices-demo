@@ -176,3 +176,6 @@ env:
 
   - name: ALLOYDB_SECRET_NAME
     value: demo-alloydb-secret
+
+rollout:
+  enabled: false
