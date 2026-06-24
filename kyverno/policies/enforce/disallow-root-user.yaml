@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-root-user
+spec:
+  validationFailureAction: Enforce # <--- Chặn ngay lập tức
+  rules:
+    - name: check-run-as-non-root
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Chạy container dưới quyền root bị cấm."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  runAsNonRoot: true

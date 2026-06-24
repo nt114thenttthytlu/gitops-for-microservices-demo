@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: prohibit-privilege-escalation
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-privilege-escalation
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Privilege escalation không được phép."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  allowPrivilegeEscalation: false

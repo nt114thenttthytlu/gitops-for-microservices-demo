@@ -1,0 +1,18 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-host-path
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-host-paths
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Việc sử dụng hostPath bị cấm để đảm bảo bảo mật cho Host."
+        pattern:
+          spec:
+            =(volumes):
+              - X(hostPath): "null"

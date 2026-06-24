@@ -172,3 +172,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+rollout:
+  enabled: false

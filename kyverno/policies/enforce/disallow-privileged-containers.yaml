@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-privileged
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Container không được phép chạy ở chế độ privileged."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  privileged: false
