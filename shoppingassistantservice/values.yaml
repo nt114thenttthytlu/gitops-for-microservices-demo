@@ -178,4 +178,9 @@ env:
     value: demo-alloydb-secret
 
 rollout:
-  enabled: false
+  enabled: true
+  strategy:
+    blueGreen:
+      activeService: shoppingassistantservice
+      previewService: shoppingassistantservice-preview
+      autoPromotionEnabled: true

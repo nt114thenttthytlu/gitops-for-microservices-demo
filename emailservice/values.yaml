@@ -154,4 +154,9 @@ tolerations: []
 affinity: {}
 
 rollout:
-  enabled: false
+  enabled: true
+  strategy:
+    blueGreen:
+      activeService: emailservice
+      previewService: emailservice-preview
+      autoPromotionEnabled: true

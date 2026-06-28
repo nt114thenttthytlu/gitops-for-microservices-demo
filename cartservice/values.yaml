@@ -157,4 +157,9 @@ tolerations: []
 affinity: {}
 
 rollout:
-  enabled: false
+  enabled: true
+  strategy:
+    blueGreen:
+      activeService: cartservice
+      previewService: cartservice-preview
+      autoPromotionEnabled: true

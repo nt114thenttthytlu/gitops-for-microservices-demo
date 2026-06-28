@@ -154,4 +154,9 @@ tolerations: []
 affinity: {}
 
 rollout:
-  enabled: false
+  enabled: true
+  strategy:
+    blueGreen:
+      activeService: adservice
+      previewService: adservice-preview
+      autoPromotionEnabled: true

@@ -158,4 +158,9 @@ tolerations: []
 affinity: {}
 
 rollout:
-  enabled: false
+  enabled: true
+  strategy:
+    blueGreen:
+      activeService: paymentservice
+      previewService: paymentservice-preview
+      autoPromotionEnabled: true

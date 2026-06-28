@@ -161,4 +161,9 @@ tolerations: []
 affinity: {}
 
 rollout:
-  enabled: false
+  enabled: true
+  strategy:
+    blueGreen:
+      activeService: checkoutservice
+      previewService: checkoutservice-preview
+      autoPromotionEnabled: true
