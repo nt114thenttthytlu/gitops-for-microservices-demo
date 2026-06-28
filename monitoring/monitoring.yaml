@@ -18,7 +18,7 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: "ebs-gp3"
+                  storageClassName: "premium-rwo"
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
@@ -35,7 +35,7 @@ spec:
           persistence:
             enabled: true
             size: 5Gi
-            storageClassName: "ebs-gp3"
+            storageClassName: "premium-rwo"
           service:
             type: LoadBalancer
             annotations:
