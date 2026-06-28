@@ -35,7 +35,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: ghcr.io/nt114thenttthytlu/microservices-demo/shippingservice:sha-ba47df6
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 50051
           readinessProbe:
@@ -57,5 +57,8 @@ spec:
             limits:
               cpu: 200m
               memory: 128Mi
+            {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        - name: ghcr-pull-secret{{- end }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

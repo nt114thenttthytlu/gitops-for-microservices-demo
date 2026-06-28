@@ -70,7 +70,7 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
-          image: ghcr.io/nt114thenttthytlu/microservices-demo/loadgenerator:sha-ba47df6
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
                 imagePullSecrets:
                   - name: ghcr-pull-secret
           env:
