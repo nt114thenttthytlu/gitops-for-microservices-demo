@@ -21,6 +21,8 @@ spec:
                   exclude: true
                 - path: 'kyverno'
                   exclude: true
+                - path: 'rediscart' # <--- Loại trừ ra để xử lý bằng file Application riêng bằng tay
+                  exclude: true
           # 2. Định nghĩa các biến môi trường để nhân bản
           - list:
               elements:
