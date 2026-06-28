@@ -2,13 +2,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shippingservice-preview
+  name: shoppingassistantservice-preview
   labels:
-    app: shippingservice
+    app: shoppingassistantservice
 spec:
   type: ClusterIP
   selector:
-    app: shippingservice
+    app: shoppingassistantservice
   ports:
     - name: grpc
       port: 8080
