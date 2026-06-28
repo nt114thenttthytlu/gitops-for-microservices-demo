@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: microservices-demo-appset
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          # 1. Quét tìm tất cả các thư mục Microservice trong repo (trừ các thư mục hệ thống)
+          - git:
+              repoURL: https://github.com/nt114thenttthytlu/gitops-for-microservices-demo.git
+              revision: main
+              directories:
+                - path: '*'
+                - path: 'applications'
+                  exclude: true
+                - path: 'monitoring'
+                  exclude: true
+                - path: 'logging'
+                  exclude: true
+                - path: 'kyverno'
+                  exclude: true
+          # 2. Định nghĩa các biến môi trường để nhân bản
+          - list:
+              elements:
+                - env: dev
+                  namespace: dev
+                  extraValueFile: values.yaml # Cứ nạp lại values gốc cho dev
+                - env: prod
+                  namespace: prod
+                  extraValueFile: values-prod.yaml # Ghi đè cấu hình Blue-Green cho prod
+  template:
+    metadata:
+      name: '{{path.basename}}-{{env}}' # Tên app dạng: adservice-dev, adservice-prod
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/nt114thenttthytlu/gitops-for-microservices-demo.git
+        targetRevision: main
+        path: '{{path}}'
+        helm:
+          # ĐÂY LÀ CHÌA KHÓA: ArgoCD gộp file values theo thứ tự từ trên xuống
+          valueFiles:
+            - values.yaml
+            - '{{extraValueFile}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}' # Đẩy vào đúng namespace dev hoặc prod
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
